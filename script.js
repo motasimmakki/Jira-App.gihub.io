@@ -40,7 +40,7 @@ removeBtn.addEventListener("click", function() {
 
 // Dynamically viewing inner ticket.
 modalCont.addEventListener("keydown", function(event) {
-   if(event.key == "Shift") {
+   if(event.shiftKey && event.key == "Enter") {
       // Calling createTicket()
       createTicket(modalPriorityColor, textArea.value);
       // Altering display and updating modal status.
