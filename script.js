@@ -50,6 +50,8 @@ modalCont.addEventListener("keydown", function(event) {
       allPriorityColors.forEach( colorElement => {
          colorElement.classList.remove("active");
       });
+      document.querySelector(".MarkingArea .Black").classList.add("active");
+      modalPriorityColor = "Black";
    }
 });
 
