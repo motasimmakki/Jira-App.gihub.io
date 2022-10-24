@@ -1,0 +1,92 @@
+body {
+    margin: 0%;
+    padding: 0%;
+}
+.Navbar {
+    width: 98.97%;
+    height: 2.5rem;
+    padding: 0.5rem;
+    display: flex;
+    background-color: rgb(86, 81, 81);
+}
+.AddTodo>div {
+    width: 15%;
+    height: 60%;
+    box-sizing: content-box;
+    margin-left: 2%;
+}
+.AddTodo {
+    width: 15%;
+    height: 90%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-left: 2%;
+    background-color: rgb(50, 48, 48);
+}
+.Pink {
+    background-color: lightpink;
+}
+.Green {
+    background-color: lightgreen;
+}
+.Blue {
+    background-color: lightblue;
+}
+.Black {
+    background-color: black;
+}
+.Oprations {
+    width: 5rem;
+    height: 90%;
+    margin-left: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: rgb(50, 48, 48);
+}
+.Oprations i {
+    font-size: 100%;
+    color: white;
+}
+.MainArea {
+    margin: 0%;
+    padding: 0%;
+    /* width: 60%;
+    height: 40%; */
+    width: 50vw;
+    height: 40vh;
+    display: none;
+    position: absolute;
+    top: calc((100vh - 40vh)/2);
+    left: calc((100vw - 50vw)/2);
+    background-color: lightblue;
+}
+.TypingArea {
+    width: 75%;
+    height: 98.6%;
+    display: flex;
+    background-color: lightgrey;
+    border: none;
+    resize: none;
+    outline: none;
+    font-size: 3vh;
+}
+.MarkingArea {
+    width: 25%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(86, 81, 81);
+}
+.MarkingArea>div {
+    width: 40%;
+    height: 12%;
+    display: flex;
+}
+/* ::placeholder {
+    color: balck;
+    opacity: 0.4;
+} */
