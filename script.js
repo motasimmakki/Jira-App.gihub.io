@@ -4,6 +4,7 @@ const removeBtn = document.querySelector(".Delete");
 const modalCont = document.querySelector(".MainArea");
 const textArea = document.querySelector(".TypingArea");
 const mainCont = document.querySelector(".main-cont");
+const allPriorityColors = document.querySelectorAll(".PriorityColor");
 
 // Colors array.
 const colors = ["Pink", "Green", "Blue", "Black"];
@@ -46,6 +47,9 @@ modalCont.addEventListener("keydown", function(event) {
       modalCont.style.display = "none";
       isModalPresent = false;
       textArea.value = "";
+      allPriorityColors.forEach( colorElement => {
+         colorElement.classList.remove("active");
+      });
    }
 });
 
@@ -64,3 +68,13 @@ function createTicket(ticketColor, data) {
    `;
    mainCont.appendChild(ticketCont);
 }
+
+allPriorityColors.forEach(colorElement => {
+   colorElement.addEventListener("click", function() {
+      allPriorityColors.forEach( colorElement => {
+         colorElement.classList.remove("active");
+      });
+      colorElement.classList.add("active");
+      modalPriorityColor = colorElement.classList[0];
+   });
+});

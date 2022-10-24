@@ -120,3 +120,6 @@ body {
     flex-wrap: wrap;
     gap: 2rem;
 }
+.active {
+    border: 5px solid red;
+}
