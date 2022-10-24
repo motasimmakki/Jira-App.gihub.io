@@ -1,6 +1,6 @@
 // Returning the first element that matches selector.
 const addBtn = document.querySelector(".Add");
-const removeBtn = document.querySelector(".Delete");
+const removeBtn = document.querySelector(".Delete i");
 const modalCont = document.querySelector(".MainArea");
 const textArea = document.querySelector(".TypingArea");
 const mainCont = document.querySelector(".main-cont");
@@ -26,20 +26,19 @@ addBtn.addEventListener("click", function() {
    isModalPresent = !isModalPresent;
 });
 
+var isRemoveBtnActive = false;
 removeBtn.addEventListener("click", function() {
-   if(!isModalPresent)  {
+   // Make it active if inactive (By making it red)
+   if(!isRemoveBtnActive)  {
     // Display Modal.
-    modalCont.style.display = "flex";
+      removeBtn.style.color = "red";
    }
-   if(isModalPresent) {
-    // Hide Modal.
-    modalCont.style.display = "none";
+   // Deactivate it.
+   if(isRemoveBtnActive) {
+      removeBtn.style.color = "white";
    }
-   isModalPresent = !isModalPresent;
+   isRemoveBtnActive = !isRemoveBtnActive;
 });
-
-// Hovering on AddTodo.
-// *******************
 
 // Dynamically viewing inner ticket.
 modalCont.addEventListener("keydown", function(event) {
@@ -82,6 +81,8 @@ function createTicket(ticketColor, data, ticketID) {
       });
       localStorage.setItem("tickets", JSON.stringify(ticketsArr));
    }
+
+   handleRemoval(ticketCont, id);
 }
 // Getting data from local storage for re-rendering of tickets.
 if(localStorage.getItem("tickets")) {
@@ -102,6 +103,7 @@ allPriorityColors.forEach(colorElement => {
    });
 });
 
+// Hovering on AddTodo.
 // Getting ticket on the basis of ticket color.
 addTodoCont.forEach(toolBoxColor => {
    toolBoxColor.addEventListener("click", function() {
@@ -123,7 +125,6 @@ addTodoCont.forEach(toolBoxColor => {
    
    // Displaying all tickets on double click.
    toolBoxColor.addEventListener("dblclick", function() {
-      console.log("Working . . .");
       // Removes tickets of current color.
       let allTickets = document.querySelectorAll(".ticket-cont");
       allTickets.forEach(ticketObj => ticketObj.remove());
@@ -134,3 +135,39 @@ addTodoCont.forEach(toolBoxColor => {
       });
    });
 });
+
+// Remove ticket if remove button is active.
+function handleRemoval(ticketCont, id) {
+   ticketCont.addEventListener("click", function(){
+      if(!isRemoveBtnActive) return;
+      // Remove from tickets array.
+      let idx = getTicketIndex(id);
+      // console.log(idx);
+      ticketsArr.splice(idx, 1);
+      // Set in local storage.
+      localStorage.setItem("tickets", JSON.stringify(ticketsArr));
+      
+      // Remove from frontend.
+      // Removing all tickets.
+      let allTickets = document.querySelectorAll(".ticket-cont");
+      allTickets.forEach(ticketObj => ticketObj.remove());
+      // Displaying only the current present tickets.
+      let availableTickets = JSON.parse(localStorage.getItem("tickets"))
+      // console.log(availableTickets);
+      availableTickets.forEach(ticketObj => {
+         createTicket(ticketObj.ticketColor, ticketObj.ticketTask, ticketObj.ticketID);
+      })
+   });
+}
+
+
+function getTicketIndex(id) {
+   let ticketToDelete;
+   ticketsArr.forEach(ticketObj => {
+      if(ticketObj.ticketID == id) {
+         ticketToDelete = ticketObj;
+         return;
+      }
+   });
+   return ticketsArr.indexOf(ticketToDelete);
+}
