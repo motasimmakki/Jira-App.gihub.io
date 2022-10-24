@@ -45,17 +45,18 @@ modalCont.addEventListener("keydown", function(event) {
       // Altering display and updating modal status.
       modalCont.style.display = "none";
       isModalPresent = false;
+      textArea.value = "";
    }
 });
 
 function createTicket(ticketColor, data) {
-   // Need to code for generating id.
-   let id = "coming soon..."
+   // Generating short unique id npm package.
+   let id = new ShortUniqueId();
    let ticketCont = document.createElement("div");
    ticketCont.setAttribute("class", "ticket-cont");
    ticketCont.innerHTML = `
       <div class="ticket-color ${ticketColor}"></div>
-      <div class="ticket-id">${id}</div>
+      <div class="ticket-id">#${id()}</div>
       <div class="task-area">${data}</div>
       <div class="ticket-lock">
          <i class="fa-solid fa-lock"></i>
