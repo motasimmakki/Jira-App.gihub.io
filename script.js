@@ -120,4 +120,17 @@ addTodoCont.forEach(toolBoxColor => {
          createTicket(ticketObj.ticketColor, ticketObj.ticketTask, ticketObj.ticketID);
       });
    });
+   
+   // Displaying all tickets on double click.
+   toolBoxColor.addEventListener("dblclick", function() {
+      console.log("Working . . .");
+      // Removes tickets of current color.
+      let allTickets = document.querySelectorAll(".ticket-cont");
+      allTickets.forEach(ticketObj => ticketObj.remove());
+
+      // Display tickets of all color.
+      ticketsArr.forEach(ticketObj => {
+         createTicket(ticketObj.ticketColor, ticketObj.ticketTask, ticketObj.ticketID);
+      });
+   });
 });
