@@ -90,6 +90,7 @@ if(localStorage.getItem("tickets")) {
       createTicket(ticketObj.ticketColor, ticketObj.ticketTask, ticketObj.ticketID);
    });
 }
+// console.log(localStorage.getItem("tickets"));
 
 allPriorityColors.forEach(colorElement => {
    colorElement.addEventListener("click", function() {
@@ -105,6 +106,18 @@ allPriorityColors.forEach(colorElement => {
 addTodoCont.forEach(toolBoxColor => {
    toolBoxColor.addEventListener("click", function() {
       let currColor = this.classList[0];
-      console.log(currColor);
+      // console.log(currColor);
+      let filteredTicket = ticketsArr.filter((currTicket) => {
+         return (currTicket.ticketColor == currColor);
+      });
+      // console.log(filteredTicket);
+      // Hiding all tickets.
+      let allTickets = document.querySelectorAll(".ticket-cont");
+      allTickets.forEach(ticketObj => ticketObj.remove());
+
+      // Displaying only filtered tickets.
+      filteredTicket.forEach(ticketObj => {
+         createTicket(ticketObj.ticketColor, ticketObj.ticketTask, ticketObj.ticketID);
+      });
    });
 });
