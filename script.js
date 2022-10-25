@@ -83,6 +83,7 @@ function createTicket(ticketColor, data, ticketID) {
    }
 
    handleRemoval(ticketCont, id);
+   handlePriorityColor(ticketCont, id);
 }
 // Getting data from local storage for re-rendering of tickets.
 if(localStorage.getItem("tickets")) {
@@ -170,4 +171,23 @@ function getTicketIndex(id) {
       }
    });
    return ticketsArr.indexOf(ticketToDelete);
+}
+
+// Change priority on hover.
+function handlePriorityColor(ticketCont, id) {
+   let ticketColor = ticketCont.querySelector(".ticket-color");
+   ticketColor.addEventListener("click", function() {
+      // Getting index for new ticket color.
+      let currTicketColor = ticketColor.classList[1];
+      let currTicketColorIdx = colors.indexOf(currTicketColor);
+      let newTicketColorIdx =  (currTicketColorIdx + 1) % colors.length;
+      let newTicketColor = colors[newTicketColorIdx];
+      ticketColor.classList.remove(currTicketColor);
+      ticketColor.classList.add(newTicketColor);
+
+      // Updating local storage.
+      let idx = getTicketIndex(id);
+      ticketsArr[idx].ticketColor = newTicketColor;
+      localStorage.setItem("tickets", JSON.stringify(ticketsArr));
+   });
 }
