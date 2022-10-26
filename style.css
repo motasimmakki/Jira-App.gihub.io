@@ -60,7 +60,10 @@ body {
     justify-content: center;
     align-items: center;
 }
-.AddTodo>div:hover, .Operations>div:hover{
+.AddTodo>div:hover {
+    opacity: 0.6;
+} 
+.Operations>div:hover {
     background-color: #6F6B6B;
 }
 .MainArea {
