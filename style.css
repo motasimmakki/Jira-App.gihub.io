@@ -110,7 +110,7 @@ body {
 } */
 .ticket-cont {
     width: 15rem;
-    height: 15rem;
+    min-height: 15rem;
     background-color: #f1f2f6;
 }
 .ticket-color {
@@ -129,11 +129,13 @@ body {
     overflow-wrap: break-word;
     font-family: "Comic Sans MS", "Comic Sans", cursive;
     padding: 0.5rem;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 .ticket-lock {
     display: flex;
     justify-content: flex-end;
-    margin-top: -50px;
+    margin-top: -35px;
     margin-right: 10px;
     font-size: 1.5rem;
 }
