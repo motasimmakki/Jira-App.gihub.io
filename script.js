@@ -1,6 +1,6 @@
 // Returning the first element that matches selector.
 const addBtn = document.querySelector(".Add");
-const removeBtn = document.querySelector(".Delete i");
+const removeBtn = document.querySelector(".Delete");
 const modalCont = document.querySelector(".MainArea");
 const textArea = document.querySelector(".TypingArea");
 const mainCont = document.querySelector(".main-cont");
@@ -29,13 +29,14 @@ addBtn.addEventListener("click", function() {
 var isRemoveBtnActive = false;
 removeBtn.addEventListener("click", function() {
    // Make it active if inactive (By making it red)
+   let removeSign = document.querySelector(".Delete i");
    if(!isRemoveBtnActive)  {
     // Display Modal.
-      removeBtn.style.color = "red";
+      removeSign.style.color = "red";
    }
    // Deactivate it.
    if(isRemoveBtnActive) {
-      removeBtn.style.color = "white";
+      removeSign.style.color = "white";
    }
    isRemoveBtnActive = !isRemoveBtnActive;
 });
