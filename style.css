@@ -110,7 +110,7 @@ body {
 } */
 .ticket-cont {
     width: 15rem;
-    height: 12rem;
+    height: 15rem;
     background-color: #f1f2f6;
 }
 .ticket-color {
@@ -133,7 +133,7 @@ body {
 .ticket-lock {
     display: flex;
     justify-content: flex-end;
-    margin-top: -35px;
+    margin-top: -50px;
     margin-right: 10px;
     font-size: 1.5rem;
 }
