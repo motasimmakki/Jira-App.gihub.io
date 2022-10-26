@@ -88,6 +88,7 @@ body {
     resize: none;
     outline: none;
     font-size: 3vh;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
 }
 .MarkingArea {
     width: 25%;
@@ -120,11 +121,14 @@ body {
     background-color: yellow;
     display: flex;
     align-items: center;
+    padding-left: 0.5rem;
 }
 .task-area {
     height: calc(100% - 1rem - 2rem);
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     overflow-wrap: break-word;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    padding: 0.5rem;
 }
 .ticket-lock {
     display: flex;
@@ -155,6 +159,7 @@ body {
     margin-top: 2rem;
     color: white;
     font-size: 1rem;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
 }
 .Connect {
     width: 10%;
