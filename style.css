@@ -1,6 +1,7 @@
 body {
     margin: 0%;
     padding: 0%;
+    user-select: none;
 }
 .Navbar {
     width: 98.97%;
@@ -87,7 +88,7 @@ body {
     display: flex;
 }
 /* ::placeholder {
-    color: balck;
+    color: black;
     opacity: 0.4;
 } */
 .ticket-cont {
@@ -123,3 +124,10 @@ body {
 .active {
     border: 5px solid red;
 }
+/* Style the ticket */
+/* .task-area {
+
+}
+.task-area[contenteditable = "true"] {
+
+} */

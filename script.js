@@ -84,6 +84,7 @@ function createTicket(ticketColor, data, ticketID) {
 
    handleRemoval(ticketCont, id);
    handlePriorityColor(ticketCont, id);
+   handleLock(ticketCont, id);
 }
 // Getting data from local storage for re-rendering of tickets.
 if(localStorage.getItem("tickets")) {
@@ -189,5 +190,38 @@ function handlePriorityColor(ticketCont, id) {
       let idx = getTicketIndex(id);
       ticketsArr[idx].ticketColor = newTicketColor;
       localStorage.setItem("tickets", JSON.stringify(ticketsArr));
+   });
+}
+
+// <i class="fa-solid fa-lock-open"></i>
+// Change ticket content on after unlocking.
+function handleLock(ticketCont, id) {
+   let ticketLock = ticketCont.querySelector(".fa-lock, .fa-Lock-open");
+   ticketLock.addEventListener("click", function() {
+      // Changing lock in frontend.
+      let closeLock = "fa-lock";
+      let openLock = "fa-lock-open";
+      let currLock = ticketLock.classList[1];
+      if(currLock == openLock) {
+         ticketLock.classList.remove(openLock);
+         ticketLock.classList.add(closeLock);
+      } else {
+         ticketLock.classList.remove(closeLock);
+         ticketLock.classList.add(openLock);
+      }
+      // If lock is open, make content editable.
+      currLock = ticketLock.classList[1];
+      let currTaskArea = ticketCont.querySelector(".task-area");
+      if(currLock == openLock) {
+         currTaskArea.setAttribute("contenteditable", "true");
+      } else {
+         currTaskArea.setAttribute("contenteditable", "false");
+         // Update the new content in local storage,
+         // every time when it is unlocked.
+         let currTicketTask = currTaskArea.innerHTML;
+         let idx = getTicketIndex(id);
+         ticketsArr[idx].ticketTask = currTicketTask;
+         localStorage.setItem("tickets", JSON.stringify(ticketsArr));
+      }
    });
 }
